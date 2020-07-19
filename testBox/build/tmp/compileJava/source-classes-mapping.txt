@@ -1,0 +1,2 @@
+ru/stqa/pft/testbox/program.java
+ ru.stqa.pft.testbox.program
