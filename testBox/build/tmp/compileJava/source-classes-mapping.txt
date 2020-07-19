@@ -1,2 +1,6 @@
 ru/stqa/pft/testbox/program.java
  ru.stqa.pft.testbox.program
+ru/stqa/pft/testbox/Rectangle.java
+ ru.stqa.pft.testbox.Rectangle
+ru/stqa/pft/testbox/Square.java
+ ru.stqa.pft.testbox.Square
