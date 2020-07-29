@@ -3,7 +3,6 @@ package ru.stqa.pft.testbox;
 public class program {
 	public static void main(String[] args) {
 
-	/*
 	hello("user");
 	hello("Alex");
 	hello("Gabe");
@@ -21,12 +20,5 @@ public class program {
 	public static void hello(String somebody) {
 		System.out.println("Hello, " + somebody + "!");
 	}
-	*/
 
-	Point p1 = new Point(4, 6);
-	Point p2 = new Point(8, 15);
-
-		System.out.println("Расстояние между точкой X и Y равно " + distance());
-
-	}
 }
