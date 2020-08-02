@@ -29,34 +29,9 @@ public class TestBase {
       wd.findElement(By.xpath("//input[@value='Login']")).click();
     }
 
-    public void deleteContact() {
-      acceptNextAlert = true;
-      wd.findElement(By.xpath("//input[@value='Delete']")).click();
-      assertTrue(closeAlertAndGetItsText().matches("^Delete 1 addresses[\\s\\S]$"));
-    }
-
-    public void chooseContact() {
-      wd.findElement(By.name("selected[]")).click();
-    }
-
     @AfterMethod(alwaysRun = true)
     public void tearDown() throws Exception {
         app.stop();
     }
 
-    public String closeAlertAndGetItsText() {
-      try {
-        Alert alert = wd.switchTo().alert();
-        String alertText = alert.getText();
-        if (acceptNextAlert) {
-          alert.accept();
-        } else {
-          alert.dismiss();
-        }
-        return alertText;
-      } finally {
-        acceptNextAlert = true;
-      }
-    }
-    
 }
