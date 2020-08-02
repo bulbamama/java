@@ -11,6 +11,10 @@ public class ContactHelper {
     public WebDriver wd;
     public boolean acceptNextAlert = true;
 
+    public ContactHelper(WebDriver wd) {
+        this.wd = wd;
+    }
+
     public void submitContact() {
       wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
     }
