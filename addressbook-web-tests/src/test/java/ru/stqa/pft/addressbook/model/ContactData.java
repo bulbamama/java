@@ -34,4 +34,5 @@ public class ContactData {
     public String getEmail() {
         return email;
     }
+
 }

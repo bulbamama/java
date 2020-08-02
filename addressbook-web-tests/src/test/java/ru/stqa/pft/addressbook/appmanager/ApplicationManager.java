@@ -10,6 +10,7 @@ import static org.testng.Assert.assertTrue;
 
 public class ApplicationManager {
 
+
     public WebDriver wd;
     public boolean acceptNextAlert = true;
 

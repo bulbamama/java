@@ -13,6 +13,7 @@ public class ContactCreationTests extends TestBase{
     app.getContactHelper().submitContact();
     app.gotoHomePage();
     app.logout();
+
   }
 
 }
