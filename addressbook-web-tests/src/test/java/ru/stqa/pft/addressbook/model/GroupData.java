@@ -22,5 +22,4 @@ public class GroupData {
     public String getFooter() {
         return footer;
     }
-
 }

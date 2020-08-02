@@ -7,13 +7,12 @@ import ru.stqa.pft.addressbook.model.ContactData;
 
 import static org.testng.Assert.assertTrue;
 
-public class ContactHelper {
+public class ContactHelper extends HelperBase {
 
-    public WebDriver wd;
     public boolean acceptNextAlert = true;
 
     protected ContactHelper(WebDriver wd) {
-        this.wd = wd;
+        super(wd);
     }
 
     public void submitContact() {
@@ -47,7 +46,6 @@ public class ContactHelper {
         click(By.xpath("//input[@value='Delete']"));
         assertTrue(closeAlertAndGetItsText().matches("^Delete 1 addresses[\\s\\S]$"));
     }
-
     public void chooseContact() {
         click(By.name("selected[]"));
     }
