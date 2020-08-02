@@ -1,25 +1,27 @@
 package ru.stqa.pft.addressbook.tests;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
+import ru.stqa.pft.addressbook.model.ContactData;
 
 import static org.testng.Assert.assertTrue;
 
 public class TestBase {
 
-    protected final ApplicationManager app = new ApplicationManager();
+    public final ApplicationManager app = new ApplicationManager();
     public WebDriver wd;
-    private boolean acceptNextAlert = true;
+    public boolean acceptNextAlert = true;
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() throws Exception {
         app.init();
     }
 
-    protected void login(String username, String password) {
+    public void login(String username, String password) {
       wd.findElement(By.name("user")).click();
       wd.findElement(By.name("user")).clear();
       wd.findElement(By.name("user")).sendKeys(username);
@@ -28,19 +30,19 @@ public class TestBase {
       wd.findElement(By.xpath("//input[@value='Login']")).click();
     }
 
-    protected void logout() {
+    public void logout() {
       wd.findElement(By.linkText("Logout")).click();
     }
 
-    protected void gotoHomePage() {
+    public void gotoHomePage() {
       wd.findElement(By.linkText("home page")).click();
     }
 
-    protected void submitContact() {
+    public void submitContact() {
       wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
     }
 
-    protected void fillFieldsContact(ContactData contactData) {
+    public void fillFieldsContact(ContactData contactData) {
       wd.findElement(By.name("firstname")).click();
       wd.findElement(By.name("firstname")).clear();
       wd.findElement(By.name("firstname")).sendKeys(contactData.getFirsname());
@@ -58,12 +60,37 @@ public class TestBase {
       wd.findElement(By.name("email")).sendKeys(contactData.getEmail());
     }
 
-    protected void gotoAddNewContact() {
+    public void gotoAddNewContact() {
       wd.findElement(By.linkText("add new")).click();
+    }
+
+    public void deleteContact() {
+      acceptNextAlert = true;
+      wd.findElement(By.xpath("//input[@value='Delete']")).click();
+      assertTrue(closeAlertAndGetItsText().matches("^Delete 1 addresses[\\s\\S]$"));
+    }
+
+    public void chooseContact() {
+      wd.findElement(By.name("selected[]")).click();
     }
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() throws Exception {
         app.stop();
+    }
+
+    public String closeAlertAndGetItsText() {
+      try {
+        Alert alert = wd.switchTo().alert();
+        String alertText = alert.getText();
+        if (acceptNextAlert) {
+          alert.accept();
+        } else {
+          alert.dismiss();
+        }
+        return alertText;
+      } finally {
+        acceptNextAlert = true;
+      }
     }
 }
