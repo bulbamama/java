@@ -6,7 +6,7 @@ import static org.testng.Assert.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class ContactDeletionTests {
+public class ContactDeletionTests extends TestBase {
   private WebDriver wd;
   private boolean acceptNextAlert = true;
 
@@ -18,7 +18,7 @@ public class ContactDeletionTests {
     login("admin", "secret");
   }
 
-  private void login(String username, String password) {
+  public void login(String username, String password) {
     wd.findElement(By.name("user")).click();
     wd.findElement(By.name("user")).clear();
     wd.findElement(By.name("user")).sendKeys(username);
@@ -34,22 +34,22 @@ public class ContactDeletionTests {
     deleteContact();
   }
 
-  private void deleteContact() {
-    acceptNextAlert = true;
-    wd.findElement(By.xpath("//input[@value='Delete']")).click();
-    assertTrue(closeAlertAndGetItsText().matches("^Delete 1 addresses[\\s\\S]$"));
-  }
-
-  private void chooseContact() {
-    wd.findElement(By.name("selected[]")).click();
-  }
-
   @AfterMethod(alwaysRun = true)
   public void tearDown() throws Exception {
     wd.quit();
   }
 
-  private String closeAlertAndGetItsText() {
+  public void deleteContact() {
+    acceptNextAlert = true;
+    wd.findElement(By.xpath("//input[@value='Delete']")).click();
+    assertTrue(closeAlertAndGetItsText().matches("^Delete 1 addresses[\\s\\S]$"));
+  }
+
+  public void chooseContact() {
+    wd.findElement(By.name("selected[]")).click();
+  }
+
+  public String closeAlertAndGetItsText() {
     try {
       Alert alert = wd.switchTo().alert();
       String alertText = alert.getText();
@@ -63,4 +63,5 @@ public class ContactDeletionTests {
       acceptNextAlert = true;
     }
   }
+
 }
