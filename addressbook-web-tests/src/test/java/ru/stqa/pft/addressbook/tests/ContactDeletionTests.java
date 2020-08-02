@@ -29,12 +29,19 @@ public class ContactDeletionTests {
   }
 
   @Test
-  public void testContactDeletionTests() throws Exception {
+  public void testContactDeletion() throws Exception {
+    chooseContact();
+    deleteContact();
+  }
 
-    wd.findElement(By.name("selected[]")).click();
+  private void deleteContact() {
     acceptNextAlert = true;
     wd.findElement(By.xpath("//input[@value='Delete']")).click();
     assertTrue(closeAlertAndGetItsText().matches("^Delete 1 addresses[\\s\\S]$"));
+  }
+
+  private void chooseContact() {
+    wd.findElement(By.name("selected[]")).click();
   }
 
   @AfterMethod(alwaysRun = true)
