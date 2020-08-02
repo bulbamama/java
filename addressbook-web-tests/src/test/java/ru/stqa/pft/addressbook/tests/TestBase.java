@@ -9,11 +9,9 @@ import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
 
 import static org.testng.Assert.assertTrue;
 
-public class TestBase {
+public class TestBase   {
 
     public final ApplicationManager app = new ApplicationManager();
-    public WebDriver wd;
-    public boolean acceptNextAlert = true;
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() throws Exception {
