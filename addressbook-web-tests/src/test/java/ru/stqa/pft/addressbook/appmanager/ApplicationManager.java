@@ -13,9 +13,9 @@ public class ApplicationManager {
     public WebDriver wd;
     public boolean acceptNextAlert = true;
 
+    private NavigationHelper navigationHelper;
     private ContactHelper contactHelper;
     private SessionHelper sessionHelper;
-    private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
 
     public void init() {
@@ -48,9 +48,5 @@ public class ApplicationManager {
 
     public ContactHelper getContactHelper() {
         return contactHelper;
-    }
-
-    public void gotoHomePage() {
-        navigationHelper.gotoHomePage();
     }
 }
