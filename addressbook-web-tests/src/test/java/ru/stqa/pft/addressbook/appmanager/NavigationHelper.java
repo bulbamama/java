@@ -5,9 +5,6 @@ import org.openqa.selenium.WebDriver;
 
 public class NavigationHelper extends HelperBase {
 
-    public WebDriver wd;
-    public boolean acceptNextAlert = true;
-
     public NavigationHelper(WebDriver wd) {
         super(wd);
     }
